@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>로그인</title>
+    <style>
+      fieldset {
+        border-radius: 10px;
+        text-align: center;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      h2,
+      input {
+        text-align: center;
+      }
+
+      ul {
+        list-style-type: none;
+        padding-inline-start: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      li {
+        margin-bottom: 10px;
+        display: flex;
+      }
+
+      label.title {
+        width: 40%;
+        text-align: left;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 60%;
+        text-align: left;
+      }
+
+      input[type="submit"] {
+        margin: 10px;
+        padding: 10px 20px;
+        border: none;
+        background-color: beige;
+        color: black;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 17px;
+      }
+
+      input[type="submit"]:hover {
+        background-color: lightgreen;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <form th:action="@{/login/authenticate}" method="post">
+      <fieldset>
+        <h1>SHOPPING MALL</h1>
+        <ul>
+          <li>
+            <label for="id" class="title">ID</label>
+            <input type="text" id="id" name="id" />
+          </li>
+          <li>
+            <label for="pw" class="title">PW</label>
+            <input type="password" id="pw" name="pw" />
+          </li>
+        </ul>
+        <input type="submit" value="로그인" />
+      </fieldset>
+
+      <div id="messageDiv" class=""></div>
+    </form>
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+      var message = /*[[${message}]]*/ null;
+      if (message && message !== "null") {
+        alert(message);
+      }
+      /*]]>*/
+    </script>
+  </body>
+</html>
